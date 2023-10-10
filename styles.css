@@ -1,16 +1,30 @@
+body{
+    display:flex;
+    justify-content: space-evenly;
+}
 button{
+    align-items:center;
     background-color:darkseagreen;
     color:ghostwhite;
     border-radius:300px;
-    height:200;
-    width:200;
-    justify-content: center;
+    border-color:darkgreen;
+    height:90px;
+    width:100px;
+    margin:25px;
 }
 .container{
     display:flex;
     position:relative;
     margin:auto;
     height:960px;
+    padding:0;
     width:960px;
+    border:none;
+}
+.grid{
+    display:inline-block;
+    margin:0;
+    padding:0;
+	outline:1px solid #000;
 
 }
