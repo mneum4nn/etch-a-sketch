@@ -1,7 +1,4 @@
-body{
-    display:flex;
-    justify-content: space-evenly;
-}
+
 button{
     align-items:center;
     background-color:darkseagreen;
@@ -14,17 +11,29 @@ button{
 }
 .container{
     display:flex;
-    position:relative;
+    flex-wrap:wrap;
+    flex:1;
     margin:auto;
     height:960px;
     padding:0;
     width:960px;
-    border:none;
+    border:1px solid #000;
+
 }
 .grid{
-    display:inline-block;
+    display:flex;
     margin:0;
     padding:0;
-	outline:1px solid #000;
+
+}
+.column{
+    display:flex;
+    flex:1;
+    justify-content:center;
+
+}
+.cell{
+    display:flex;
+    outline:1px solid #09633c;
 
 }
