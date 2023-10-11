@@ -2,7 +2,7 @@ let customSize = document.querySelector('.scale');
 let container = document.querySelector('.container');
 let grid = document.querySelector('.grid');
 let newgrid = document.querySelector('.newgrid');
-
+let cells = document.querySelectorAll('.cell');
 let defaultSize = 16;    
 
 createSquareGrid(defaultSize);
@@ -12,6 +12,13 @@ function createSquare(size){
     sqr.classList.add('cell');
     sqr.style.width =`${size}px`;
     sqr.style.height =`${size}px`;
+    //TODO: create event listener for mouseenter event to change cell colors
+// Loop through each cell and add the event listener
+
+    sqr.addEventListener('mouseenter', (mouseEvent) => {
+        randomColor(mouseEvent.target);
+        mouseEvent.target.classList.add("active");
+    });
     return sqr;
 }
 function createSquareGrid (scale){
@@ -47,4 +54,17 @@ function makeCustomGrid(){
 //TODO: create event listener for new grid button
 newgrid.addEventListener('click', makeCustomGrid);
 
-//TODO: create event listener for hover event to change cell colors
+
+
+
+
+//TODO: create function that randomly assigns an aesthetically pleasing color
+function randomColor(square){
+    let colors = ['#F94144','#F3722C','#F8961E','#F9844A','#F9C74F','#90BE6D','#43AA8B','#4D908E','#577590','#277DA1'];
+    let colorIndex = Math.floor(Math.random() * colors.length);
+    let hexCode = colors[colorIndex];
+    square.style.backgroundColor = `${hexCode}`;
+    }
+
+
+//TODO: create function to clear colors
