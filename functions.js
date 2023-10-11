@@ -13,7 +13,7 @@ function createSquare(size){
     return sqr;
 }
 function createSquareGrid (scale){
-    const sqrSize = 960/scale;
+    const sqrSize = 420/scale;
     for (let j = 0; j< scale; j++){
         const row = document.createElement('div');
         for (let i = 0; i < scale; i++){
