@@ -1,22 +1,25 @@
+let customSize = document.querySelector('.scale');
+let container = document.querySelector('.container');
+let grid = document.querySelector('.grid');
+let defaultSize = 16;    
 
-function createSquareGrid (n){
-    let container = document.querySelector('.container');
+createSquareGrid(defaultSize);
 
-    let grid = document.createElement('div');
-    grid.className='grid';
-
-    for (let i = 0; i < n; i++){
-        let column = document.createElement('div');
-        column.className='column';
-        for (let j=0; j < n;j++){
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            column.appendChild(cell);
-        }
-        grid.appendChild(column);
-    }
-    container.appendChild(grid);
+function createSquare(size){
+    let sqr = document.createElement('div');
+    sqr.classList.add('cell');
+    sqr.style.width =`${size}px`;
+    sqr.style.height =`${size}px`;
+    return sqr;
 }
-document.addEventListener('DOMContentLoaded', function() {
-    createSquareGrid(16);
-});
+function createSquareGrid (scale){
+    const sqrSize = 960/scale;
+    for (let j = 0; j< scale; j++){
+        const row = document.createElement('div');
+        for (let i = 0; i < scale; i++){
+            row.appendChild(createSquare(sqrSize));
+        }
+        grid.appendChild(row);
+    }
+}
+
