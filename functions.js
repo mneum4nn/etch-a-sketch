@@ -1,7 +1,8 @@
 let customSize = document.querySelector('.scale');
-let container = document.querySelector('.container');
-let grid = document.querySelector('.grid');
+const container = document.querySelector('.container');
+const grid = document.querySelector('.grid');
 let newgrid = document.querySelector('.newgrid');
+let refresh = document.querySelector('.refresh')
 let cells = document.querySelectorAll('.cell');
 let defaultSize = 16;    
 
@@ -17,7 +18,6 @@ function createSquare(size){
 
     sqr.addEventListener('mouseenter', (mouseEvent) => {
         randomColor(mouseEvent.target);
-        mouseEvent.target.classList.add("active");
     });
     return sqr;
 }
@@ -37,7 +37,10 @@ function makeCustomGrid(){
     //user input size
     let newScale = parseInt(customSize.value);
     //mak sure there is a size and that it fits our parameters
-    if (newScale != null && newScale <=100 && newScale>=2){
+    if (newScale <=100 && newScale>=2){ 
+        if (newScale == null){
+            newScale = 16;
+        }
         while (grid.firstChild) {
             grid.removeChild(grid.firstChild);
         }
@@ -47,16 +50,10 @@ function makeCustomGrid(){
         alert("Sorry! 100 x 100 is as big as we can go!");
     } else if (newScale<2){
         alert("Sorry! 2x2 is as small as we can go!");
-    } else if (newScale == null){
-        alert("Please input your desired square dimension");
-    }
+    } 
 }
 //TODO: create event listener for new grid button
 newgrid.addEventListener('click', makeCustomGrid);
-
-
-
-
 
 //TODO: create function that randomly assigns an aesthetically pleasing color
 function randomColor(square){
@@ -66,5 +63,5 @@ function randomColor(square){
     square.style.backgroundColor = `${hexCode}`;
     }
 
-
-//TODO: create function to clear colors
+//TODO: add event listener to refresh button to invoke cleargrid
+refresh.addEventListener('click', makeCustomGrid);
